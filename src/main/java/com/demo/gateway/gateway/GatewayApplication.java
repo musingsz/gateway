@@ -16,7 +16,7 @@ public class GatewayApplication {
 	@Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes().route(r -> r.path("/test/baidu").uri("http://ww.baidu.com"))
-                .route(r -> r.path("/hello/**").uri("lb://mweb"))
+                .route(r -> r.path("/mweb/**").uri("lb://mweb"))
                 .build();
     }
  
