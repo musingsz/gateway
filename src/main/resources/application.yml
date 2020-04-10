@@ -1,0 +1,31 @@
+
+  
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: false # 是否将服务id转换为小写
+      routes:
+      - id: mwebbbbb
+        uri: lb://mweb-service
+        predicates:
+        - Path=/mwebb/**
+        filters: 
+        - StripPrefix=1
+  application:
+     name: cloud-gateway
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
